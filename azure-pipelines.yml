@@ -9,13 +9,23 @@ trigger:
 pr:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+jobs:
+  - job: abc
+    pool:
+      vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+      steps:
+      - script: echo Hello, world!
+        displayName: 'Run a one-line script'
 
-- powershell: |
-    gci env:*
-  displayName: 'Run a multi-line script'
+      - powershell: |
+          gci env:*
+        displayName: 'Run a multi-line script'
+  
+  - job: def
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - powershell: |
+          Write-Host $(Agent.JobStatus)
+      
