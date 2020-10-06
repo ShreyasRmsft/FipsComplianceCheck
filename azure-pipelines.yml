@@ -19,10 +19,11 @@ jobs:
         displayName: 'Run a one-line script'
 
       - powershell: |
-          gci env:*
+          exit 1
         displayName: 'Run a multi-line script'
   
   - job: def
+    condition: always()
     pool:
       vmImage: 'ubuntu-latest'
     steps:
