@@ -20,6 +20,8 @@ jobs:
 
     steps:
       - powershell: |
+          gci env:*
+      - powershell: |
           belh a
         displayName: 'Run a multi-line script'
         name: setStatus
