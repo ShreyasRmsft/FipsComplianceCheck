@@ -14,14 +14,10 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
 
-      steps:
-      - script: echo Hello, world!
-        displayName: 'Run a one-line script'
+    - powershell: |
+        belh a
+      displayName: 'Run a multi-line script'
 
-      - powershell: |
-          belh a
-        displayName: 'Run a multi-line script'
-  
   - job: def
     condition: always()
     dependsOn: abc
