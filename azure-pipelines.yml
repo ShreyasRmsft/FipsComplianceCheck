@@ -19,7 +19,7 @@ jobs:
         displayName: 'Run a one-line script'
 
       - powershell: |
-          exit 1
+          belh a
         displayName: 'Run a multi-line script'
   
   - job: def
