@@ -21,13 +21,20 @@ jobs:
       - powershell: |
           belh a
         displayName: 'Run a multi-line script'
+        name: setStatus
+      - powershell: |
+          Write-Host $(Agent.JobStatus)
+          Write-Host "##vso[task.setvariable variable=PrevJobStatus;isOutput=true]$(Agent.JobStatus)"
 
   - job: def
     condition: always()
     dependsOn: abc
     pool:
       vmImage: 'ubuntu-latest'
+    variables:
+      myVarFromJobA: $[ dependencies.abc.outputs['setStatus.PrevJobStatus'] ]
     steps:
       - powershell: |
           Write-Host $(Agent.JobStatus)
+          Write-Host $(myVarFromJobA)
       
