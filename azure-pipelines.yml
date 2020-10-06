@@ -9,14 +9,18 @@ trigger:
 pr:
 - master
 
+variables:
+  skipComponentGovernanceDetection: true
+
 jobs:
   - job: abc
     pool:
       vmImage: 'ubuntu-latest'
 
-    - powershell: |
-        belh a
-      displayName: 'Run a multi-line script'
+    steps:
+      - powershell: |
+          belh a
+        displayName: 'Run a multi-line script'
 
   - job: def
     condition: always()
