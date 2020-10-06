@@ -11,6 +11,7 @@ pr:
 
 variables:
   skipComponentGovernanceDetection: true
+  system.debug: true
 
 jobs:
   - job: abc
@@ -25,6 +26,7 @@ jobs:
       - powershell: |
           Write-Host $(Agent.JobStatus)
           Write-Host "##vso[task.setvariable variable=PrevJobStatus;isOutput=true]$(Agent.JobStatus)"
+        condition: always()
 
   - job: def
     condition: always()
