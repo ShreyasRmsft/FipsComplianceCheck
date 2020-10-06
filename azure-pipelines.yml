@@ -24,6 +24,7 @@ jobs:
   
   - job: def
     condition: always()
+    dependsOn: abc
     pool:
       vmImage: 'ubuntu-latest'
     steps:
